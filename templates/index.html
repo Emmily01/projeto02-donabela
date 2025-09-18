@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+  <h2>Bem-vindos à Dona Bela</h2>
+  <p>Doceria artesanal — bolos, salgados, doces, cappuccinos e mais.</p>
+
+  <h3>Produtos em destaque</h3>
+  <div class="grid">
+    {% for p in produtos %}
+      <div class="card">
+        <h4>{{ p.nome }}</h4>
+        <p class="categoria">{{ p.categoria }}</p>
+        <p class="preco">R$ {{ '%.2f'|format(p.preco) }}</p>
+        <p>{{ p.descricao }}</p>
+      </div>
+    {% else %}
+      <p>Nenhum produto cadastrado ainda.</p>
+    {% endfor %}
+  </div>
+{% endblock %}
