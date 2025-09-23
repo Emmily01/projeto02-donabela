@@ -1,4 +1,5 @@
 # DONA BELA
+INTEGRANTES: Carla Gabriele da Silva Santos, Emmily Kettily Bezerra e Ingrid Monteiro de Melo
 
 *SOBRE O PROJETO*
 
