@@ -7,6 +7,16 @@
   <div class="grid">
     {% for p in produtos %}
       <div class="card">
+        {% if p.nome == "Bolo de Chocolate" %}
+          <img src="{{ url_for('static', filename='img/bolo-de-chocolate.jpg') }}" alt="Bolo de Chocolate">
+        {% elif p.nome == "Brigadeiro" %}
+          <img src="{{ url_for('static', filename='img/brigadeiro.jpg') }}" alt="Brigadeiro">
+        {% elif p.nome == "Cappuccino" %}
+          <img src="{{ url_for('static', filename='img/capuccino.jpg') }}" alt="Capuccino">
+        {% elif p.nome == "Coxinha" %}
+          <img src="{{ url_for('static', filename='img/coxinha.jpg') }}" alt="Coxinha">
+        {% endif %}
+
         <h4>{{ p.nome }}</h4>
         <p class="categoria">{{ p.categoria }}</p>
         <p class="preco">R$ {{ "%.2f"|format(p.preco) }}</p>
