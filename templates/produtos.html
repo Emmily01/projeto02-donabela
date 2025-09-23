@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Cardápio</h2>
+  {% if user %}
+    <a class="btn" href="{{ url_for('produto_novo') }}">+ Adicionar produto</a>
+  {% endif %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Categoria</th>
+        <th>Preço</th>
+        <th>Descrição</th>
+        {% if user %}<th>Ações</th>{% endif %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for p in produtos %}
+      <tr>
+        <td>{{ p.nome }}</td>
+        <td>{{ p.categoria }}</td>
+        <td>R$ {{ "%.2f"|format(p.preco) }}</td>
+        <td>{{ p.descricao }}</td>
+        {% if user %}
+        <td>
+          <a href="{{ url_for('produto_editar', id=p.id) }}">Editar</a>
+          <form action="{{ url_for('produto_excluir', id=p.id) }}" method="post" style="display:inline">
+            <button class="link-btn" type="submit">Excluir</button>
+          </form>
+        </td>
+        {% endif %}
+      </tr>
+      {% else %}
+      <tr><td colspan="5">Nenhum produto cadastrado.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}
